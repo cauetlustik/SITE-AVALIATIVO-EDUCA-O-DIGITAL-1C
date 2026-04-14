@@ -1,76 +1,127 @@
-// --- DATABASE SIMULADO (Array de Objetos) ---
-const servicesData = [
-    { title: "Arquitetura Verde", desc: "Projetos focados em eficiência energética." },
-    { title: "Gestão de Resíduos", desc: "Soluções inteligentes para descarte urbano." },
-    { title: "Consultoria ESG", desc: "Adequação ambiental para empresas modernas." }
+// ===============================
+// CONFIG INICIAL
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+    initServices();
+    initReveal();
+    initAccessibility();
+    initYear();
+});
+
+// ===============================
+// SERVIÇOS DINÂMICOS
+// ===============================
+const services = [
+    {
+        title: "Energia Solar",
+        desc: "Instalação de sistemas fotovoltaicos modernos.",
+        icon: "☀️"
+    },
+    {
+        title: "Reuso de Água",
+        desc: "Captação e reaproveitamento inteligente.",
+        icon: "💧"
+    },
+    {
+        title: "Hortas Urbanas",
+        desc: "Produção sustentável em áreas urbanas.",
+        icon: "🌱"
+    }
 ];
 
-const faqData = [
-    { q: "Como funciona a consultoria?", a: "Iniciamos com um diagnóstico técnico da área." },
-    { q: "Quais os prazos?", a: "Depende da complexidade, mas em média 3 meses." }
-];
+function initServices() {
+    const grid = document.getElementById("services-grid");
+    if (!grid) return;
 
-// --- RENDERIZAÇÃO DINÂMICA ---
-function renderServices() {
-    const grid = document.getElementById('services-grid');
-    grid.innerHTML = servicesData.map(item => `
+    grid.innerHTML = services.map(service => `
         <article class="card">
-            <h3>${item.title}</h3>
-            <p>${item.desc}</p>
+            <h3>${service.icon} ${service.title}</h3>
+            <p>${service.desc}</p>
         </article>
-    `).join('');
+    `).join("");
 }
 
-function renderFAQ() {
-    const accordion = document.getElementById('faq-accordion');
-    accordion.innerHTML = faqData.map((item, index) => `
-        <div class="faq-item">
-            <button class="accordion-header" aria-expanded="false" onclick="toggleAccordion(${index})">
-                ${item.q}
-            </button>
-            <div class="accordion-body" style="display:none">
-                <p>${item.a}</p>
-            </div>
-        </div>
-    `).join('');
-}
+// ===============================
+// REVEAL (INTERSECTION OBSERVER)
+// ===============================
+function initReveal() {
+    const elements = document.querySelectorAll(".reveal");
 
-// --- ACESSIBILIDADE: FONTE E CONTRASTE ---
-let currentFontSize = 100; // porcentagem
-
-document.getElementById('increase-font').addEventListener('click', () => {
-    currentFontSize += 10;
-    document.body.style.fontSize = `${currentFontSize}%`;
-});
-
-document.getElementById('decrease-font').addEventListener('click', () => {
-    currentFontSize -= 10;
-    document.body.style.fontSize = `${currentFontSize}%`;
-});
-
-document.getElementById('toggle-contrast').addEventListener('click', () => {
-    document.body.classList.toggle('high-contrast');
-});
-
-// --- SISTEMA DE ACORDEÃO ---
-function toggleAccordion(index) {
-    const bodies = document.querySelectorAll('.accordion-body');
-    const display = bodies[index].style.display;
-    bodies[index].style.display = display === 'none' ? 'block' : 'none';
-}
-
-// --- SCROLL REVEAL (INTERSECTION OBSERVER) ---
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-        }
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("active");
+            }
+        });
+    }, {
+        threshold: 0.2
     });
-});
 
-// --- INICIALIZAÇÃO ---
-document.addEventListener('DOMContentLoaded', () => {
-    renderServices();
-    renderFAQ();
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    elements.forEach(el => observer.observe(el));
+}
+
+// ===============================
+// ACESSIBILIDADE (FONTE + CONTRASTE)
+// ===============================
+function initAccessibility() {
+    const increaseBtn = document.getElementById("increase-font");
+    const decreaseBtn = document.getElementById("decrease-font");
+    const contrastBtn = document.getElementById("toggle-contrast");
+
+    let fontSize = parseFloat(localStorage.getItem("fontSize")) || 16;
+
+    applyFontSize(fontSize);
+
+    increaseBtn?.addEventListener("click", () => {
+        fontSize = Math.min(22, fontSize + 1);
+        applyFontSize(fontSize);
+    });
+
+    decreaseBtn?.addEventListener("click", () => {
+        fontSize = Math.max(14, fontSize - 1);
+        applyFontSize(fontSize);
+    });
+
+    function applyFontSize(size) {
+        document.documentElement.style.fontSize = size + "px";
+        localStorage.setItem("fontSize", size);
+    }
+
+    // CONTRASTE
+    if (localStorage.getItem("contrast") === "on") {
+        document.body.classList.add("high-contrast");
+    }
+
+    contrastBtn?.addEventListener("click", () => {
+        document.body.classList.toggle("high-contrast");
+
+        localStorage.setItem(
+            "contrast",
+            document.body.classList.contains("high-contrast") ? "on" : "off"
+        );
+    });
+}
+
+// ===============================
+// ANO AUTOMÁTICO
+// ===============================
+function initYear() {
+    const year = document.getElementById("year");
+    if (year) {
+        year.textContent = new Date().getFullYear();
+    }
+}
+
+// ===============================
+// SCROLL SUAVE (BOTÕES/ÂNCORAS)
+// ===============================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+        e.preventDefault();
+
+        const target = document.querySelector(this.getAttribute("href"));
+        target?.scrollIntoView({
+            behavior: "smooth"
+        });
+    });
 });
