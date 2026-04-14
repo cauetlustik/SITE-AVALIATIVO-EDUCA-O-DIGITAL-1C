@@ -1,17 +1,17 @@
-   /* ======================================== */
+  /* ======================================== */
 /* ----- Design System (Variáveis CSS) ----- */
 /* ======================================== */
 
 :root {
-    /* Paleta de Cores - Acolhedora e Natural */
-    --color-primary: #77A68C;    /* Verde Sálvia - Tranquilidade, Crescimento */
-    --color-secondary: #D4A0A7;  /* Rosa Queimado - Aconchego, Afeto */
-    --color-accent: #A0BCC2;     /* Azul Petróleo Suave - Serenidade, Clareza */
-    --color-background: #FDFCF8; /* Creme muito claro - Suavidade */
-    --color-surface: #FAF5F0;    /* Bege Claro - Conforto */
-    --color-text-primary: #3A4F3E; /* Verde Musgo Escuro - Natureza, Firmeza */
-    --color-text-secondary: #7F8C8D;/* Cinza Azulado - Calma, Profundidade */
-    --color-text-on-primary: #ffffff;/* Branco */
+    /* Paleta de Cores */
+    --color-primary: #4CAF50; /* Verde */
+    --color-secondary: #FFC107; /* Amarelo */
+    --color-accent: #2196F3; /* Azul */
+    --color-background: #f4f4f4; /* Cinza claro */
+    --color-surface: #ffffff; /* Branco */
+    --color-text-primary: #333333; /* Cinza escuro */
+    --color-text-secondary: #777777; /* Cinza médio */
+    --color-text-on-primary: #ffffff; /* Branco */
 
     /* Espaçamentos */
     --spacing-xs: 0.5rem; /* 8px */
@@ -19,28 +19,23 @@
     --spacing-md: 1.5rem; /* 24px */
     --spacing-lg: 2rem; /* 32px */
     --spacing-xl: 3rem; /* 48px */
-    --spacing-xxl: 4rem; /* 64px */
 
     /* Arredondamentos */
     --radius-sm: 4px;
     --radius-md: 8px;
     --radius-lg: 16px;
-    --radius-pill: 50px;
 
     /* Tipografia */
-    --font-family-base: 'Merriweather', Georgia, serif; /* Fonte serifada para aconchego */
-    --font-family-heading: 'Montserrat', Arial, sans-serif; /* Títulos modernos e claros */
     --font-size-base: 1rem; /* 16px */
-    --font-size-lg: 1.15rem; /* ~18.4px */
-    --font-size-xl: 1.3rem; /* ~20.8px */
-    --font-size-h1: 2.8rem; /* ~44.8px */
-    --font-size-h2: 2.2rem; /* ~35.2px */
+    --font-size-lg: 1.25rem; /* 20px */
+    --font-size-xl: 1.5rem; /* 24px */
+    --font-size-h1: 2.5rem; /* 40px */
+    --font-size-h2: 2rem; /* 32px */
     --font-weight-regular: 400;
-    --font-weight-medium: 500;
     --font-weight-bold: 700;
 
     /* Transições */
-    --transition-smooth: all 0.4s cubic-bezier(0.3, 0.7, 0.3, 1); /* Mais suave e responsiva */
+    --transition-smooth: all 0.3s ease-in-out;
 }
 
 /* ======================================== */
@@ -48,13 +43,13 @@
 /* ======================================== */
 
 body.high-contrast {
-    --color-primary: #00FF00; /* Verde brilhante */
-    --color-secondary: #FFFF00; /* Amarelo brilhante */
-    --color-accent: #00FFFF; /* Ciano */
+    --color-primary: #00ff00; /* Verde brilhante */
+    --color-secondary: #ffff00; /* Amarelo brilhante */
+    --color-accent: #00ffff; /* Ciano */
     --color-background: #000000; /* Preto */
     --color-surface: #111111; /* Cinza muito escuro */
-    --color-text-primary: #FFFFFF; /* Branco */
-    --color-text-secondary: #CCCCCC; /* Cinza claro */
+    --color-text-primary: #ffffff; /* Branco */
+    --color-text-secondary: #cccccc; /* Cinza claro */
     --color-text-on-primary: #000000; /* Preto */
 }
 
@@ -69,25 +64,22 @@ body.high-contrast {
 }
 
 html {
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* Habilita scroll suave */
 }
 
 body {
-    font-family: var(--font-family-base);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: var(--color-background);
     color: var(--color-text-primary);
-    line-height: 1.8; /* Espaçamento aumentado para leitura confortável */
+    line-height: 1.6;
     font-size: var(--font-size-base);
     transition: var(--transition-smooth);
-    overflow-x: hidden;
 }
 
 h1, h2, h3 {
-    font-family: var(--font-family-heading);
     font-weight: var(--font-weight-bold);
-    line-height: 1.2;
     margin-bottom: var(--spacing-md);
-    letter-spacing: -0.5px;
+    line-height: 1.2;
 }
 
 h1 { font-size: var(--font-size-h1); }
@@ -96,20 +88,17 @@ h3 { font-size: var(--font-size-xl); }
 
 p {
     margin-bottom: var(--spacing-md);
-    color: var(--color-text-secondary);
 }
 
 a {
     color: var(--color-accent);
     text-decoration: none;
     transition: var(--transition-smooth);
-    font-weight: var(--font-weight-medium);
 }
 
 a:hover, a:focus {
     text-decoration: underline;
     color: var(--color-primary);
-    transform: translateY(-2px);
 }
 
 button {
@@ -124,25 +113,18 @@ ul {
     list-style: none;
 }
 
-.content-wrapper {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 var(--spacing-md);
-}
-
 /* ======================================== */
 /* ----- Componentes e Layouts ----- */
 /* ======================================== */
 
 /* Header e Navegação */
 header {
-    background-color: rgba(253, 252, 248, 0.9); /* Creme suave semi-transparente */
-    backdrop-filter: blur(10px);
-    padding: var(--spacing-sm) 0;
-    box-shadow: 0 3px 10px rgba(58, 79, 62, 0.05); /* Sombra sutil verde musgo */
+    background-color: var(--color-surface);
+    padding: var(--spacing-sm) var(--spacing-md);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: sticky;
     top: 0;
-    z-index: 1000;
+    z-index: 100;
 }
 
 nav {
@@ -151,21 +133,12 @@ nav {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--spacing-md);
 }
 
 .logo {
-    font-family: var(--font-family-heading);
     font-weight: var(--font-weight-bold);
-    font-size: 1.8rem;
+    font-size: var(--font-size-lg);
     color: var(--color-primary);
-    letter-spacing: 1px;
-    transition: transform 0.3s ease;
-}
-
-.logo:hover, .logo:focus {
-    transform: scale(1.05);
-    text-decoration: none;
 }
 
 nav ul {
@@ -175,12 +148,9 @@ nav ul {
 
 nav ul li a {
     color: var(--color-text-primary);
-    font-family: var(--font-family-heading);
-    font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-bold);
     padding: var(--spacing-sm) 0;
     position: relative;
-    font-size: var(--font-size-lg);
-    letter-spacing: 0.5px;
 }
 
 nav ul li a::after {
@@ -189,8 +159,8 @@ nav ul li a::after {
     bottom: 0;
     left: 0;
     width: 0;
-    height: 3px;
-    background-color: var(--color-secondary); /* Linha secundária mais suave */
+    height: 2px;
+    background-color: var(--color-primary);
     transition: var(--transition-smooth);
 }
 
@@ -199,173 +169,117 @@ nav ul li a:focus::after {
     width: 100%;
 }
 
-/* Controle de Acessibilidade */
 .accessibility-controls {
     display: flex;
     gap: var(--spacing-sm);
 }
 
 .accessibility-controls button {
-    background-color: var(--color-secondary); /* Botões com cor secundária */
-    color: var(--color-text-primary); /* Texto primário (mais escuro) */
-    border-radius: var(--radius-pill);
+    background-color: var(--color-primary);
+    color: var(--color-text-on-primary);
+    border-radius: var(--radius-sm);
     padding: var(--spacing-xs) var(--spacing-sm);
     font-weight: var(--font-weight-bold);
-    font-size: 0.9rem;
-    box-shadow: 0 2px 5px rgba(212, 160, 167, 0.3); /* Sombra suave rosa */
-    transition: var(--transition-smooth), transform 0.2s ease;
+    transition: var(--transition-smooth);
 }
 
 .accessibility-controls button:hover,
 .accessibility-controls button:focus {
-    background-color: var(--color-primary); /* Cor primária no hover */
-    color: var(--color-text-on-primary); /* Texto branco */
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 4px 10px rgba(119, 166, 140, 0.4); /* Sombra verde */
+    background-color: var(--color-accent);
+    transform: translateY(-2px);
 }
 
 /* Seções Principais */
 main section {
-    padding: var(--spacing-xxl) 0;
+    padding: var(--spacing-xl) var(--spacing-md);
+    max-width: 1200px;
+    margin: 0 auto;
     text-align: center;
-    position: relative;
-    overflow: hidden; /* Essencial para efeitos de fundo */
 }
 
-/* Hero Section - Acolhedor e Sereno */
+/* Hero Section */
 #hero {
-    background-color: var(--color-primary); /* Fundo verde sálvia */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1500x500/ADD8E6/000000?text=Natureza+Relaxante'); /* Placeholder de imagem */
+    background-size: cover;
+    background-position: center;
     color: var(--color-text-on-primary);
-    min-height: 85vh; /* Mais alto para impacto */
+    min-height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative;
-    background-image: url('https://images.unsplash.com/photo-1501476436744-6a3c436e4164?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80'); /* Imagem suave de natureza */
-    background-size: cover;
-    background-position: center;
-}
-
-/* Camada escura para destacar o texto */
-#hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(119, 166, 140, 0.7) 0%, rgba(160, 188, 194, 0.7) 100%);
-    z-index: 1;
-}
-
-#hero h1, #hero p, #hero-cta {
-    position: relative; /* Para ficarem acima da camada */
-    z-index: 2;
 }
 
 #hero h1 {
-    font-size: 3.5rem;
-    text-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    animation: fadeInDown 1s ease-out forwards;
-    opacity: 0;
+    color: var(--color-text-on-primary);
+    margin-bottom: var(--spacing-sm);
 }
 
 #hero p {
-    font-size: 1.3rem;
-    max-width: 700px;
-    animation: fadeInUp 1s ease-out forwards 0.5s;
-    opacity: 0;
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-lg);
 }
 
-#hero-cta {
-    animation: fadeInUp 1s ease-out forwards 1s;
-    opacity: 0;
-    background-color: var(--color-secondary); /* Botão rosa queimado */
-    color: var(--color-text-primary); /* Texto escuro */
-    padding: var(--spacing-sm) var(--spacing-xl);
-    border-radius: var(--radius-pill);
-    font-size: 1.2rem;
-    box-shadow: 0 6px 20px rgba(212, 160, 167, 0.4);
+.cta-button {
+    background-color: var(--color-secondary);
+    color: var(--color-text-primary);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-lg);
+    transition: var(--transition-smooth);
+    display: inline-block;
 }
 
-#hero-cta:hover, #hero-cta:focus {
-    background-color: var(--color-accent); /* Azul suave no hover */
-    color: var(--color-text-on-primary); /* Texto branco */
-    box-shadow: 0 8px 25px rgba(160, 188, 194, 0.5);
-    transform: translateY(-4px) scale(1.05);
+.cta-button:hover,
+.cta-button:focus {
+    background-color: var(--color-primary);
+    color: var(--color-text-on-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
 }
-
-/* Animações de entrada padrão */
-@keyframes fadeInDown { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes fadeInLeft { from { opacity: 0; transform: translateX(-50px); } to { opacity: 1; transform: translateX(0); } }
-@keyframes fadeInRight { from { opacity: 0; transform: translateX(50px); } to { opacity: 1; transform: translateX(0); } }
 
 /* Seção Sobre */
-#sobre {
-    background-color: var(--color-surface); /* Bege claro */
-}
-
-#sobre h2 {
-    color: var(--color-primary); /* Verde Sálvia */
-}
-
 #sobre article {
     max-width: 800px;
     margin: 0 auto;
     text-align: left;
-    color: var(--color-text-secondary); /* Cinza azulado */
 }
 
 /* Seção Benefícios - Carrossel */
 .carousel-container {
     position: relative;
     width: 100%;
-    max-width: 900px;
-    margin: var(--spacing-xxl) auto;
+    max-width: 800px;
+    margin: var(--spacing-xl) auto;
     overflow: hidden;
-    padding: 0 var(--spacing-lg);
-    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    padding: 0 var(--spacing-lg); /* Espaço para botões */
 }
 
 .carousel-track {
     display: flex;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.5s ease-in-out;
 }
 
 .carousel-item {
     min-width: 100%;
     box-sizing: border-box;
-    background-color: var(--color-surface); /* Bege Claro */
-    padding: var(--spacing-xl);
-    border-radius: var(--radius-lg);
-    box-shadow: 0 8px 25px rgba(58, 79, 62, 0.08); /* Sombra sutil verde musgo */
+    background-color: var(--color-surface);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin: 0 1rem;
-    transform: scale(0.95);
-    opacity: 0.7;
-    transition: var(--transition-smooth), transform 0.5s ease, opacity 0.5s ease;
-}
-
-.carousel-item.active {
-    transform: scale(1);
-    opacity: 1;
-    box-shadow: 0 12px 30px rgba(119, 166, 140, 0.2); /* Sombra verde sálvia */
+    margin-right: 1rem; /* Espaço entre itens visíveis se não for 100% */
 }
 
 .carousel-item h3 {
-    color: var(--color-primary); /* Verde Sálvia */
-    font-size: 1.8rem;
-}
-
-.carousel-item p {
-    font-size: 1.1rem;
-    color: var(--color-text-secondary); /* Cinza azulado */
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
 }
 
 .carousel-prev,
@@ -373,198 +287,117 @@ main section {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: var(--color-secondary); /* Rosa Queimado */
-    color: var(--color-text-primary); /* Texto escuro */
+    background-color: var(--color-primary);
+    color: var(--color-text-on-primary);
     border: none;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
     cursor: pointer;
-    z-index: 10;
+    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: var(--transition-smooth), transform 0.2s ease;
-    box-shadow: 0 4px 10px rgba(212, 160, 167, 0.3); /* Sombra rosa */
+    transition: var(--transition-smooth);
 }
 
 .carousel-prev {
-    left: 10px;
+    left: 0;
 }
 
 .carousel-next {
-    right: 10px;
+    right: 0;
 }
 
-.carousel-prev:hover, .carousel-prev:focus,
-.carousel-next:hover, .carousel-next:focus {
-    background-color: var(--color-primary); /* Verde Sálvia no hover */
-    color: var(--color-text-on-primary); /* Texto branco */
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: 0 6px 15px rgba(119, 166, 140, 0.4); /* Sombra verde */
+.carousel-prev:hover,
+.carousel-prev:focus,
+.carousel-next:hover,
+.carousel-next:focus {
+    background-color: var(--color-accent);
 }
 
 /* Seção Recursos - Abas */
 .tabs-container {
-    max-width: 900px;
-    margin: var(--spacing-xxl) auto;
-    background-color: var(--color-surface); /* Bege Claro */
-    padding: var(--spacing-xl);
+    max-width: 800px;
+    margin: var(--spacing-xl) auto;
+    background-color: var(--color-surface);
+    padding: var(--spacing-md);
     border-radius: var(--radius-lg);
-    box-shadow: 0 8px 25px rgba(58, 79, 62, 0.08); /* Sombra verde musgo */
-    position: relative;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .tabs-nav {
     display: flex;
     justify-content: center;
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--color-background);
     padding-bottom: var(--spacing-sm);
-    position: relative;
-}
-
-.tabs-nav::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    height: 2px;
-    background-color: var(--color-background); /* Linha de fundo creme */
-    border-radius: 2px;
 }
 
 .tab-button {
     background-color: transparent;
-    color: var(--color-text-secondary); /* Cinza azulado */
+    color: var(--color-text-secondary);
     padding: var(--spacing-sm) var(--spacing-md);
-    margin: 0 var(--spacing-sm);
-    border-bottom: 4px solid transparent;
-    font-family: var(--font-family-heading);
+    margin: 0 var(--spacing-xs);
+    border-bottom: 3px solid transparent;
     font-weight: var(--font-weight-bold);
-    font-size: 1.1rem;
-    letter-spacing: 0.5px;
-    transition: var(--transition-smooth), color 0.3s ease, border-color 0.3s ease;
+    transition: var(--transition-smooth);
 }
 
 .tab-button[aria-selected="true"] {
-    color: var(--color-primary); /* Verde Sálvia */
+    color: var(--color-primary);
     border-bottom-color: var(--color-primary);
-    transform: translateY(-3px);
 }
 
-.tab-button:hover, .tab-button:focus {
-    color: var(--color-accent); /* Azul Petróleo Suave */
-    border-bottom-color: var(--color-accent);
-    transform: translateY(-3px);
+.tab-button:hover,
+.tab-button:focus {
+    color: var(--color-accent);
 }
 
 .tab-panel {
-    padding: var(--spacing-lg) 0;
+    padding: var(--spacing-md) 0;
     text-align: center;
-    animation: fadeInUp 0.6s ease-out forwards;
-    opacity: 0;
-}
-
-.tab-panel.visible {
-    opacity: 1;
-}
-
-.tab-panel h3 {
-    color: var(--color-accent); /* Azul Petróleo Suave */
-    font-size: 2rem;
-}
-
-.tab-panel p {
-    font-size: 1.1rem;
-    color: var(--color-text-secondary);
-    max-width: 700px;
-    margin: var(--spacing-md) auto;
-}
-
-.learn-more-link {
-    display: inline-block;
-    background-color: var(--color-secondary); /* Rosa Queimado */
-    color: var(--color-text-primary); /* Texto escuro */
-    padding: var(--spacing-sm) var(--spacing-lg);
-    border-radius: var(--radius-pill);
-    font-size: 1.1rem;
-    transition: var(--transition-smooth), transform 0.2s ease;
-    box-shadow: 0 4px 10px rgba(212, 160, 167, 0.3); /* Sombra rosa */
-}
-
-.learn-more-link:hover, .learn-more-link:focus {
-    background-color: var(--color-accent); /* Azul Suave */
-    color: var(--color-text-on-primary); /* Texto branco */
-    transform: translateY(-3px) scale(1.05);
-    text-decoration: none;
-    box-shadow: 0 6px 15px rgba(160, 188, 194, 0.4); /* Sombra azul */
 }
 
 /* Seção Contato */
 #contato {
-    background-color: var(--color-secondary); /* Fundo Rosa Queimado */
-    color: var(--color-text-primary); /* Texto escuro */
-}
-
-#contato h2 {
-    color: var(--color-text-primary);
-    font-size: 2.5rem;
-}
-
-#contato p {
-    color: rgba(58, 79, 62, 0.9); /* Texto verde musgo levemente transparente */
-    font-size: 1.2rem;
-}
-
-#contato .cta-button {
-    background-color: var(--color-primary); /* Verde Sálvia */
-    color: var(--color-text-on-primary); /* Texto branco */
-    padding: var(--spacing-sm) var(--spacing-xl);
-    font-size: 1.2rem;
-    font-weight: var(--font-weight-bold);
-    box-shadow: 0 6px 20px rgba(119, 166, 140, 0.4); /* Sombra verde */
-}
-
-#contato .cta-button:hover, #contato .cta-button:focus {
-    background-color: var(--color-text-on-primary); /* Branco no hover */
-    color: var(--color-primary); /* Verde Sálvia no hover */
-    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.5);
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-xl) var(--spacing-md);
 }
 
 /* Footer */
 footer {
-    background-color: var(--color-text-primary); /* Verde Musgo Escuro */
-    color: var(--color-text-on-primary); /* Branco */
+    background-color: var(--color-text-primary);
+    color: var(--color-text-on-primary);
     text-align: center;
     padding: var(--spacing-lg) var(--spacing-md);
-    margin-top: var(--spacing-xxl);
-    font-size: 0.9rem;
+    margin-top: var(--spacing-xl);
 }
 
 footer a {
-    color: var(--color-secondary); /* Rosa Queimado */
+    color: var(--color-secondary);
     font-weight: var(--font-weight-bold);
 }
 
-footer a:hover, footer a:focus {
-    color: var(--color-surface); /* Bege Claro */
+footer a:hover,
+footer a:focus {
+    color: var(--color-surface);
 }
 
 /* ======================================== */
 /* ----- Animações de Entrada (Scroll Reveal) ----- */
 /* ======================================== */
 
-/* As animações são aplicadas diretamente às seções via CSS */
-main > section {
+[data-scroll-reveal="true"] {
     opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.3, 0.7, 0.3, 1);
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-main > section.is-visible {
+[data-scroll-reveal="true"].is-visible {
     opacity: 1;
     transform: translateY(0);
 }
@@ -573,48 +406,61 @@ main > section.is-visible {
 /* ----- Responsividade (Media Queries) ----- */
 /* ======================================== */
 
+/* Tablets e Telas Maiores */
 @media (min-width: 768px) {
     body {
-        font-size: calc(var(--font-size-base) + 0.1rem);
+        font-size: calc(var(--font-size-base) + 0.1rem); /* Aumenta um pouco a fonte base */
     }
+
     h1 { font-size: calc(var(--font-size-h1) * 1.1); }
     h2 { font-size: calc(var(--font-size-h2) * 1.1); }
 
-    nav ul { display: flex; }
+    nav ul {
+        display: flex; /* Garante que a navegação esteja visível */
+    }
 
     .carousel-item {
-        min-width: calc(50% - 1rem);
-        margin: 0 0.5rem;
-    }
-    .carousel-item.active {
-        transform: scale(1.05);
+        min-width: calc(50% - 0.5rem); /* Exibe dois itens por vez em telas maiores */
     }
 
-    .tabs-nav { justify-content: center; }
-    .tab-button { font-size: 1.2rem; }
+    .tabs-nav {
+        justify-content: flex-start; /* Alinha as abas à esquerda */
+    }
+
+    .tab-button {
+        margin: 0 var(--spacing-sm);
+    }
 }
 
+/* Desktops e Telas Grandes */
 @media (min-width: 1024px) {
-    body { font-size: var(--font-size-base); }
+    body {
+        font-size: var(--font-size-base); /* Volta ao base, mas com mais espaço */
+    }
+
     h1 { font-size: var(--font-size-h1); }
     h2 { font-size: var(--font-size-h2); }
 
-    nav ul { gap: var(--spacing-xl); }
-
-    .carousel-container {
-        mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    main section {
+        padding: var(--spacing-xl) var(--spacing-xl); /* Mais padding horizontal */
     }
 
     .carousel-item {
-        min-width: calc(33.333% - 1rem);
-        margin: 0 0.5rem;
+        min-width: calc(33.333% - 0.7rem); /* Exibe três itens por vez */
     }
-
-    .tab-button { margin: 0 var(--spacing-lg); }
 }
 
-@media (min-width: 1440px) {
-    nav, main section .content-wrapper, .carousel-container, .tabs-container {
-        max-width: 1200px;
-    }
+/* Alto Contraste - Ajustes finos se necessário */
+body.high-contrast .cta-button {
+    border: 2px solid var(--color-text-primary);
+}
+
+body.high-contrast .carousel-prev,
+body.high-contrast .carousel-next {
+    background-color: var(--color-accent);
+    color: var(--color-background);
+}
+
+body.high-contrast nav ul li a::after {
+    background-color: var(--color-secondary);
 }
