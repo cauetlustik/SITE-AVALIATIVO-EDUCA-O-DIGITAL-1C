@@ -5,17 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================
 
     const beneficiosData = [
-        { title: "Hipertrofia Muscular Otimizada", description: "Entenda os mecanismos científicos para construir massa muscular de forma eficaz e sustentável." },
-        { title: "Aumento de Força Máxima", description: "Descubra métodos de treino comprovados para superar platôs e alcançar novos patamares de força." },
-        { title: "Melhora da Composição Corporal", description: "Reduza o percentual de gordura e aumente a massa magra para um físico mais definido e saudável." },
-        { title: "Prevenção de Lesões", description: "Aprenda a importância do aquecimento, alongamento dinâmico e técnica correta para treinar com segurança." },
-        { title: "Aumento da Longevidade Ativa", description: "Manter-se ativo com musculação melhora a saúde óssea e metabólica, contribuindo para uma vida mais longa e plena." },
-        { title: "Bem-Estar Mental e Confiança", description: "Superar desafios no treino reflete diretamente na autoestima e na capacidade de lidar com o estresse diário." }
+        { title: "Redução do Estresse e Ansiedade", description: "Técnicas de respiração profunda e meditação guiada para encontrar calma no seu dia a dia." },
+        { title: "Melhora da Qualidade do Sono", description: "Rotinas relaxantes e práticas de atenção plena para adormecer mais rápido e ter um sono reparador." },
+        { title: "Aumento da Energia Vital", description: "Movimentos conscientes e nutrição afetiva que revitalizam seu corpo e mente." },
+        { title: "Fortalecimento da Autoestima e Confiança", description: "Reconheça seu valor ao priorizar seu bem-estar e cultivar o amor próprio." },
+        { title: "Clareza Mental e Foco", description: "Aprenda a silenciar o ruído mental para tomar decisões mais alinhadas com suas necessidades." },
+        { title: "Resiliência Emocional", description: "Desenvolva a capacidade de lidar com desafios de forma mais equilibrada e serena." }
     ];
 
     const carouselTrack = document.querySelector('.carousel-track');
     let currentSlide = 0;
-    let itemsPerPage = 1; // Inicializa com 1 para mobile
+    let itemsPerPage = 1;
 
     function updateItemsPerPage() {
         if (window.innerWidth >= 1024) {
@@ -33,14 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
         beneficiosData.forEach((beneficio, index) => {
             const item = document.createElement('div');
             item.classList.add('carousel-item');
-            item.setAttribute('data-index', index); // Adiciona índice para referência
+            item.setAttribute('data-index', index);
             item.innerHTML = `
                 <h3>${beneficio.title}</h3>
                 <p>${beneficio.description}</p>
             `;
             carouselTrack.appendChild(item);
         });
-        updateCarousel();
+        updateCarouselDisplay(); // Chama para aplicar o estado inicial corretamente
     }
 
     // ========================================
@@ -52,27 +52,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const items = carouselTrack.children;
         const totalItems = items.length;
 
-        // Reinicia o slide se o número de itens visíveis mudar drasticamente
+        // Ajusta o slide atual se o número de itens visíveis mudar
         if (currentSlide > totalItems - itemsPerPage) {
             currentSlide = Math.max(0, totalItems - itemsPerPage);
         }
 
-        // Calcula o offset baseado nos itens visíveis e no slide atual
-        // O cálculo `(100 / itemsPerPage)` define a largura de cada slide visível
-        // O `currentSlide * (100 / itemsPerPage)` move o track para a esquerda
-        let offset = -currentSlide * (100 / itemsPerPage);
+        const offset = -currentSlide * (100 / itemsPerPage);
         carouselTrack.style.transform = `translateX(${offset}%)`;
 
-        // Atualiza a classe 'active' para o item central (ou o primeiro se não houver um central claro)
+        // Atualiza a classe 'active'
         Array.from(items).forEach((item, index) => {
             item.classList.remove('active');
-            // Verifica se o item está dentro do conjunto visível atual
             if (index >= currentSlide && index < currentSlide + itemsPerPage) {
                 item.classList.add('active');
             }
         });
 
-        // Habilita/desabilita botões
         const prevButton = document.querySelector('.carousel-prev');
         const nextButton = document.querySelector('.carousel-next');
         if (prevButton) prevButton.disabled = currentSlide === 0;
@@ -91,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateCarouselDisplay();
     }
 
-    // Event listeners para botões do carrossel
     document.querySelector('.carousel-prev')?.addEventListener('click', () => {
         goToSlide(currentSlide - itemsPerPage);
     });
@@ -100,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
         goToSlide(currentSlide + itemsPerPage);
     });
 
-    // Atualiza o carrossel em redimensionamento da janela
     window.addEventListener('resize', () => {
         updateItemsPerPage();
         updateCarouselDisplay();
@@ -127,7 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
         tabPanels.forEach(panel => {
             const isVisible = panel.getAttribute('id') === tabId;
             panel.hidden = !isVisible;
-            // Adiciona uma classe para controle de animação
             if (isVisible) {
                 panel.classList.add('visible');
                 panel.setAttribute('aria-hidden', 'false');
@@ -146,20 +138,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Define a primeira aba como ativa por padrão
-    setActiveTab('tab-panel-musculacao');
+    setActiveTab('tab-panel-mindfulness');
 
     // ========================================
     // ===== Acessibilidade: Controle de Fonte =====
     // ========================================
 
     const htmlElement = document.documentElement;
-    // Captura o font-size base inicial do navegador (geralmente 16px)
     const baseFontSize = parseFloat(getComputedStyle(htmlElement).fontSize);
-    let currentScale = 1; // Fator de escala inicial
+    let currentScale = 1;
 
-    // Atualiza o tamanho da fonte usando escala
     function updateFontSizeScale(scaleFactor) {
-        const newScale = Math.max(0.8, Math.min(1.5, currentScale * scaleFactor)); // Limita entre 80% e 150%
+        const newScale = Math.max(0.8, Math.min(1.5, currentScale * scaleFactor));
         htmlElement.style.fontSize = `${baseFontSize * newScale}px`;
         currentScale = newScale;
     }
@@ -177,4 +167,44 @@ document.addEventListener('DOMContentLoaded', () => {
     // ========================================
 
     const bodyElement = document.body;
-    const
+    const toggleContrastButton = document.getElementById('toggle-contrast');
+
+    toggleContrastButton?.addEventListener('click', () => {
+        bodyElement.classList.toggle('high-contrast');
+        localStorage.setItem('theme', bodyElement.classList.contains('high-contrast') ? 'high-contrast' : 'default');
+    });
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'high-contrast') {
+        bodyElement.classList.add('high-contrast');
+    }
+
+    // ========================================
+    // ===== Animações de Entrada (Scroll Reveal) =====
+    // ========================================
+
+    const scrollRevealOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, scrollRevealOptions);
+
+    document.querySelectorAll('main > section').forEach(section => {
+        observer.observe(section);
+    });
+
+    // ========================================
+    // ===== Inicialização =====
+    // ========================================
+
+    updateItemsPerPage(); // Define o número inicial de itens por página
+    renderCarouselItems(); // Renderiza os cards do carrossel
+
+});
