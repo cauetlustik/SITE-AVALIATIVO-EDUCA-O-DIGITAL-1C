@@ -3,15 +3,15 @@
 /* ======================================== */
 
 :root {
-    /* Paleta de Cores */
-    --color-primary: #4CAF50; /* Verde */
-    --color-secondary: #FFC107; /* Amarelo */
-    --color-accent: #2196F3; /* Azul */
-    --color-background: #f4f4f4; /* Cinza claro */
-    --color-surface: #ffffff; /* Branco */
-    --color-text-primary: #333333; /* Cinza escuro */
-    --color-text-secondary: #777777; /* Cinza médio */
-    --color-text-on-primary: #ffffff; /* Branco */
+    /* Paleta de Cores - Mais Energética */
+    --color-primary: #E63946;    /* Vermelho vibrante - Foco, Energia */
+    --color-secondary: #FCA311;  /* Laranja/Amarelo - Vitalidade, Motivação */
+    --color-accent: #1475CF;     /* Azul forte - Força, Confiança */
+    --color-background: #f8f9fa; /* Cinza muito claro, quase branco */
+    --color-surface: #ffffff;    /* Branco puro */
+    --color-text-primary: #1a1a1a; /* Quase preto */
+    --color-text-secondary: #6c757d;/* Cinza médio */
+    --color-text-on-primary: #ffffff;/* Branco */
 
     /* Espaçamentos */
     --spacing-xs: 0.5rem; /* 8px */
@@ -19,23 +19,26 @@
     --spacing-md: 1.5rem; /* 24px */
     --spacing-lg: 2rem; /* 32px */
     --spacing-xl: 3rem; /* 48px */
+    --spacing-xxl: 4rem; /* 64px */
 
     /* Arredondamentos */
     --radius-sm: 4px;
     --radius-md: 8px;
-    --radius-lg: 16px;
+    --radius-lg: 12px;
+    --radius-pill: 50px; /* Para botões mais arredondados */
 
     /* Tipografia */
     --font-size-base: 1rem; /* 16px */
-    --font-size-lg: 1.25rem; /* 20px */
-    --font-size-xl: 1.5rem; /* 24px */
-    --font-size-h1: 2.5rem; /* 40px */
-    --font-size-h2: 2rem; /* 32px */
+    --font-size-lg: 1.15rem; /* ~18.4px */
+    --font-size-xl: 1.3rem; /* ~20.8px */
+    --font-size-h1: 2.8rem; /* ~44.8px */
+    --font-size-h2: 2.2rem; /* ~35.2px */
     --font-weight-regular: 400;
+    --font-weight-medium: 500;
     --font-weight-bold: 700;
 
     /* Transições */
-    --transition-smooth: all 0.3s ease-in-out;
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transição mais suave e com bounce */
 }
 
 /* ======================================== */
@@ -43,14 +46,14 @@
 /* ======================================== */
 
 body.high-contrast {
-    --color-primary: #00ff00; /* Verde brilhante */
-    --color-secondary: #ffff00; /* Amarelo brilhante */
-    --color-accent: #00ffff; /* Ciano */
-    --color-background: #000000; /* Preto */
-    --color-surface: #111111; /* Cinza muito escuro */
-    --color-text-primary: #ffffff; /* Branco */
-    --color-text-secondary: #cccccc; /* Cinza claro */
-    --color-text-on-primary: #000000; /* Preto */
+    --color-primary: #00ff00;
+    --color-secondary: #ffff00;
+    --color-accent: #00ffff;
+    --color-background: #000000;
+    --color-surface: #111111;
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #cccccc;
+    --color-text-on-primary: #000000;
 }
 
 /* ======================================== */
@@ -64,22 +67,24 @@ body.high-contrast {
 }
 
 html {
-    scroll-behavior: smooth; /* Habilita scroll suave */
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif; /* Fonte mais moderna */
     background-color: var(--color-background);
     color: var(--color-text-primary);
-    line-height: 1.6;
+    line-height: 1.7; /* Espaçamento entre linhas aumentado */
     font-size: var(--font-size-base);
     transition: var(--transition-smooth);
+    overflow-x: hidden; /* Evita scroll horizontal acidental */
 }
 
 h1, h2, h3 {
     font-weight: var(--font-weight-bold);
+    line-height: 1.1; /* Títulos mais compactos */
     margin-bottom: var(--spacing-md);
-    line-height: 1.2;
+    letter-spacing: -0.5px; /* Leve ajuste de kerning */
 }
 
 h1 { font-size: var(--font-size-h1); }
@@ -88,17 +93,20 @@ h3 { font-size: var(--font-size-xl); }
 
 p {
     margin-bottom: var(--spacing-md);
+    color: var(--color-text-secondary);
 }
 
 a {
     color: var(--color-accent);
     text-decoration: none;
     transition: var(--transition-smooth);
+    font-weight: var(--font-weight-medium);
 }
 
 a:hover, a:focus {
     text-decoration: underline;
     color: var(--color-primary);
+    transform: translateY(-2px); /* Leve pulso no hover */
 }
 
 button {
@@ -113,18 +121,25 @@ ul {
     list-style: none;
 }
 
+.content-wrapper {
+    max-width: 1100px; /* Ajuste de largura máxima */
+    margin: 0 auto;
+    padding: 0 var(--spacing-md); /* Padding lateral consistente */
+}
+
 /* ======================================== */
 /* ----- Componentes e Layouts ----- */
 /* ======================================== */
 
 /* Header e Navegação */
 header {
-    background-color: var(--color-surface);
-    padding: var(--spacing-sm) var(--spacing-md);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparente */
+    backdrop-filter: blur(8px); /* Efeito blur */
+    padding: var(--spacing-sm) 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Sombra mais sutil */
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000; /* Z-index mais alto */
 }
 
 nav {
@@ -133,12 +148,20 @@ nav {
     align-items: center;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 var(--spacing-md);
 }
 
 .logo {
     font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-lg);
+    font-size: 1.8rem; /* Tamanho do logo */
     color: var(--color-primary);
+    letter-spacing: 1px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover, .logo:focus {
+    transform: scale(1.05);
+    text-decoration: none;
 }
 
 nav ul {
@@ -148,9 +171,11 @@ nav ul {
 
 nav ul li a {
     color: var(--color-text-primary);
-    font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-medium);
     padding: var(--spacing-sm) 0;
     position: relative;
+    font-size: var(--font-size-lg);
+    letter-spacing: 0.5px;
 }
 
 nav ul li a::after {
@@ -159,7 +184,7 @@ nav ul li a::after {
     bottom: 0;
     left: 0;
     width: 0;
-    height: 2px;
+    height: 3px; /* Linha mais grossa */
     background-color: var(--color-primary);
     transition: var(--transition-smooth);
 }
@@ -169,6 +194,7 @@ nav ul li a:focus::after {
     width: 100%;
 }
 
+/* Controle de Acessibilidade */
 .accessibility-controls {
     display: flex;
     gap: var(--spacing-sm);
@@ -177,109 +203,194 @@ nav ul li a:focus::after {
 .accessibility-controls button {
     background-color: var(--color-primary);
     color: var(--color-text-on-primary);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-pill); /* Botões arredondados */
     padding: var(--spacing-xs) var(--spacing-sm);
     font-weight: var(--font-weight-bold);
-    transition: var(--transition-smooth);
+    font-size: 0.9rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: var(--transition-smooth), transform 0.2s ease;
 }
 
 .accessibility-controls button:hover,
 .accessibility-controls button:focus {
-    background-color: var(--color-accent);
-    transform: translateY(-2px);
+    background-color: var(--color-secondary); /* Muda a cor no hover */
+    transform: translateY(-3px) scale(1.05); /* Efeito de pulso */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 /* Seções Principais */
 main section {
-    padding: var(--spacing-xl) var(--spacing-md);
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: var(--spacing-xxl) 0; /* Espaçamento vertical maior */
     text-align: center;
+    position: relative; /* Para pseudo-elementos de fundo */
 }
 
-/* Hero Section */
+/* Hero Section - Mais Dinâmico */
 #hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1500x500/ADD8E6/000000?text=Natureza+Relaxante'); /* Placeholder de imagem */
+    background-image: linear-gradient(135deg, rgba(230, 57, 70, 0.8) 0%, rgba(20, 117, 207, 0.8) 100%), url('https://images.unsplash.com/photo-1517840905126-f077274561a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1050&q=80'); /* Imagem de alta energia */
     background-size: cover;
     background-position: center;
     color: var(--color-text-on-primary);
-    min-height: 60vh;
+    min-height: 80vh; /* Mais alto */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
+    overflow: hidden; /* Para garantir que os pseudo-elementos fiquem contidos */
+}
+
+#hero::before, #hero::after {
+    content: '';
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    filter: blur(80px); /* Efeito de brilho suave */
+    z-index: 0;
+}
+
+#hero::before {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: -50px;
+    animation: float 6s infinite ease-in-out alternate;
+}
+
+#hero::after {
+    width: 250px;
+    height: 250px;
+    bottom: 10%;
+    right: -30px;
+    animation: float 7s infinite ease-in-out alternate-reverse;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-30px); }
+    100% { transform: translateY(0px); }
 }
 
 #hero h1 {
     color: var(--color-text-on-primary);
-    margin-bottom: var(--spacing-sm);
+    font-size: 3.5rem; /* Título maior */
+    text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    margin-bottom: var(--spacing-md);
+    animation: fadeInDown 1s ease-out forwards; /* Animação de entrada */
+    opacity: 0;
 }
 
 #hero p {
-    font-size: var(--font-size-lg);
+    font-size: 1.3rem; /* Parágrafo maior */
     margin-bottom: var(--spacing-lg);
+    max-width: 600px;
+    animation: fadeInUp 1s ease-out forwards 0.5s; /* Delay para a animação */
+    opacity: 0;
 }
 
-.cta-button {
+#hero-cta {
+    animation: fadeInUp 1s ease-out forwards 1s; /* Delay maior */
+    opacity: 0;
     background-color: var(--color-secondary);
     color: var(--color-text-primary);
-    padding: var(--spacing-sm) var(--spacing-lg);
-    border-radius: var(--radius-lg);
-    font-weight: var(--font-weight-bold);
-    font-size: var(--font-size-lg);
-    transition: var(--transition-smooth);
-    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-xl);
+    border-radius: var(--radius-pill);
+    font-size: 1.2rem;
+    box-shadow: 0 6px 20px rgba(252, 163, 17, 0.4);
 }
 
-.cta-button:hover,
-.cta-button:focus {
+#hero-cta:hover, #hero-cta:focus {
     background-color: var(--color-primary);
     color: var(--color-text-on-primary);
-    transform: translateY(-3px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(230, 57, 70, 0.5);
+    transform: translateY(-4px) scale(1.05);
 }
 
+/* Animações de entrada padrão */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+
 /* Seção Sobre */
+#sobre {
+    background-color: var(--color-surface);
+}
+
+#sobre h2 {
+    color: var(--color-primary);
+}
+
 #sobre article {
     max-width: 800px;
     margin: 0 auto;
     text-align: left;
+    color: var(--color-text-secondary);
 }
 
 /* Seção Benefícios - Carrossel */
 .carousel-container {
     position: relative;
     width: 100%;
-    max-width: 800px;
-    margin: var(--spacing-xl) auto;
+    max-width: 900px; /* Mais largo */
+    margin: var(--spacing-xxl) auto;
     overflow: hidden;
-    padding: 0 var(--spacing-lg); /* Espaço para botões */
+    padding: 0 var(--spacing-lg);
+    /* Adiciona um gradiente sutil nas laterais para indicar que é rolável */
+    mask-image: linear-gradient(to right, transparent 0%, black 5%, black 95%, transparent 100%);
 }
 
 .carousel-track {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Transição mais suave */
 }
 
 .carousel-item {
     min-width: 100%;
     box-sizing: border-box;
     background-color: var(--color-surface);
-    padding: var(--spacing-lg);
-    border-radius: var(--radius-md);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: var(--spacing-xl); /* Padding interno maior */
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-right: 1rem; /* Espaço entre itens visíveis se não for 100% */
+    margin: 0 1rem; /* Margem entre itens (em conjunto com min-width) */
+    transform: scale(0.95); /* Levemente menor para dar profundidade */
+    opacity: 0.7;
+    transition: var(--transition-smooth), transform 0.5s ease; /* Transição para escala e opacidade */
+}
+
+.carousel-item.active { /* Classe adicionada via JS para o item central */
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 12px 30px rgba(230, 57, 70, 0.2); /* Sombra destacada */
 }
 
 .carousel-item h3 {
     color: var(--color-primary);
     margin-bottom: var(--spacing-sm);
+    font-size: 1.8rem;
+}
+
+.carousel-item p {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
 }
 
 .carousel-prev,
@@ -291,90 +402,175 @@ main section {
     color: var(--color-text-on-primary);
     border: none;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
+    width: 50px; /* Botões maiores */
+    height: 50px;
+    font-size: 1.5rem; /* Ícone maior */
     cursor: pointer;
-    z-index: 1;
+    z-index: 10; /* Acima do mask-image */
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: var(--transition-smooth);
+    transition: var(--transition-smooth), transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .carousel-prev {
-    left: 0;
+    left: 10px; /* Mais próximos da borda */
 }
 
 .carousel-next {
-    right: 0;
+    right: 10px; /* Mais próximos da borda */
 }
 
 .carousel-prev:hover,
 .carousel-prev:focus,
 .carousel-next:hover,
 .carousel-next:focus {
-    background-color: var(--color-accent);
+    background-color: var(--color-secondary);
+    transform: translateY(-5px) scale(1.1); /* Efeito de pulso mais pronunciado */
+    box-shadow: 0 6px 15px rgba(252, 163, 17, 0.4);
 }
 
 /* Seção Recursos - Abas */
 .tabs-container {
-    max-width: 800px;
-    margin: var(--spacing-xl) auto;
+    max-width: 900px; /* Largura maior */
+    margin: var(--spacing-xxl) auto;
     background-color: var(--color-surface);
-    padding: var(--spacing-md);
+    padding: var(--spacing-xl); /* Padding maior */
     border-radius: var(--radius-lg);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    position: relative;
 }
 
 .tabs-nav {
     display: flex;
     justify-content: center;
-    margin-bottom: var(--spacing-md);
-    border-bottom: 2px solid var(--color-background);
+    margin-bottom: var(--spacing-lg);
     padding-bottom: var(--spacing-sm);
+    position: relative;
+}
+
+/* Linha decorativa abaixo das abas */
+.tabs-nav::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; /* Mais larga */
+    height: 2px;
+    background-color: var(--color-background);
+    border-radius: 2px;
 }
 
 .tab-button {
     background-color: transparent;
     color: var(--color-text-secondary);
     padding: var(--spacing-sm) var(--spacing-md);
-    margin: 0 var(--spacing-xs);
-    border-bottom: 3px solid transparent;
+    margin: 0 var(--spacing-sm);
+    border-bottom: 4px solid transparent; /* Linha oculta */
     font-weight: var(--font-weight-bold);
-    transition: var(--transition-smooth);
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    transition: var(--transition-smooth), color 0.3s ease, border-color 0.3s ease;
 }
 
 .tab-button[aria-selected="true"] {
     color: var(--color-primary);
-    border-bottom-color: var(--color-primary);
+    border-bottom-color: var(--color-primary); /* Linha visível */
+    transform: translateY(-3px); /* Leve levantamento */
 }
 
 .tab-button:hover,
 .tab-button:focus {
     color: var(--color-accent);
+    border-bottom-color: var(--color-accent); /* Cor da borda no hover */
+    transform: translateY(-3px);
 }
 
 .tab-panel {
-    padding: var(--spacing-md) 0;
+    padding: var(--spacing-lg) 0;
     text-align: center;
+    animation: fadeInUp 0.6s ease-out forwards; /* Animação para o conteúdo da aba */
+    opacity: 0;
+}
+
+.tab-panel.visible { /* Classe adicionada via JS */
+    opacity: 1;
+}
+
+.tab-panel h3 {
+    color: var(--color-accent);
+    font-size: 2rem; /* Título da aba maior */
+}
+
+.tab-panel p {
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    max-width: 700px;
+    margin: var(--spacing-md) auto;
+}
+
+.learn-more-link {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-text-on-primary);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-pill);
+    font-size: 1.1rem;
+    transition: var(--transition-smooth), transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(230, 57, 70, 0.3);
+}
+
+.learn-more-link:hover,
+.learn-more-link:focus {
+    background-color: var(--color-secondary);
+    color: var(--color-text-primary);
+    transform: translateY(-3px) scale(1.05);
+    text-decoration: none;
+    box-shadow: 0 6px 15px rgba(252, 163, 17, 0.4);
 }
 
 /* Seção Contato */
 #contato {
-    background-color: var(--color-surface);
-    border-radius: var(--radius-lg);
-    margin-top: var(--spacing-xl);
-    padding: var(--spacing-xl) var(--spacing-md);
+    background-color: var(--color-primary); /* Fundo chamativo */
+    color: var(--color-text-on-primary);
+}
+
+#contato h2 {
+    color: var(--color-text-on-primary);
+    font-size: 2.5rem;
+}
+
+#contato p {
+    color: rgba(255, 255, 255, 0.9); /* Texto levemente transparente */
+    font-size: 1.2rem;
+}
+
+#contato .cta-button {
+    background-color: var(--color-secondary);
+    color: var(--color-text-primary);
+    padding: var(--spacing-sm) var(--spacing-xl);
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-bold);
+    box-shadow: 0 6px 20px rgba(252, 163, 17, 0.4);
+}
+
+#contato .cta-button:hover,
+#contato .cta-button:focus {
+    background-color: var(--color-text-on-primary);
+    color: var(--color-primary);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.5);
 }
 
 /* Footer */
 footer {
     background-color: var(--color-text-primary);
-    color: var(--color-text-on-primary);
+    color: var(--color-text-secondary);
     text-align: center;
     padding: var(--spacing-lg) var(--spacing-md);
-    margin-top: var(--spacing-xl);
+    margin-top: var(--spacing-xxl);
+    font-size: 0.9rem;
 }
 
 footer a {
@@ -391,16 +587,30 @@ footer a:focus {
 /* ----- Animações de Entrada (Scroll Reveal) ----- */
 /* ======================================== */
 
-[data-scroll-reveal="true"] {
+/* Animações mais refinadas e sequenciais */
+.section-reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-[data-scroll-reveal="true"].is-visible {
+.section-reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
+
+/* Aplicando a animação a todas as seções principais */
+main > section {
+    opacity: 0; /* Inicialmente oculto */
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+main > section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 /* ======================================== */
 /* ----- Responsividade (Media Queries) ----- */
@@ -409,58 +619,63 @@ footer a:focus {
 /* Tablets e Telas Maiores */
 @media (min-width: 768px) {
     body {
-        font-size: calc(var(--font-size-base) + 0.1rem); /* Aumenta um pouco a fonte base */
+        font-size: calc(var(--font-size-base) + 0.1rem);
     }
 
     h1 { font-size: calc(var(--font-size-h1) * 1.1); }
     h2 { font-size: calc(var(--font-size-h2) * 1.1); }
 
     nav ul {
-        display: flex; /* Garante que a navegação esteja visível */
+        display: flex;
     }
 
     .carousel-item {
-        min-width: calc(50% - 0.5rem); /* Exibe dois itens por vez em telas maiores */
+        min-width: calc(50% - 1rem); /* Exibe dois itens por vez */
+        margin: 0 0.5rem; /* Ajuste de margem */
+    }
+    .carousel-item.active { /* O item ativo central fica maior */
+        transform: scale(1.05);
     }
 
     .tabs-nav {
-        justify-content: flex-start; /* Alinha as abas à esquerda */
+        justify-content: center; /* Mantém centralizado */
     }
 
     .tab-button {
-        margin: 0 var(--spacing-sm);
+        font-size: 1.2rem; /* Botões maiores */
     }
 }
 
 /* Desktops e Telas Grandes */
 @media (min-width: 1024px) {
     body {
-        font-size: var(--font-size-base); /* Volta ao base, mas com mais espaço */
+        font-size: var(--font-size-base);
     }
 
     h1 { font-size: var(--font-size-h1); }
     h2 { font-size: var(--font-size-h2); }
 
-    main section {
-        padding: var(--spacing-xl) var(--spacing-xl); /* Mais padding horizontal */
+    nav ul {
+        gap: var(--spacing-xl); /* Mais espaço entre links */
+    }
+
+    .carousel-container {
+        mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); /* Ajuste do mask */
     }
 
     .carousel-item {
-        min-width: calc(33.333% - 0.7rem); /* Exibe três itens por vez */
+        min-width: calc(33.333% - 1rem); /* Exibe três itens por vez */
+        margin: 0 0.5rem;
+    }
+
+     .tab-button {
+        margin: 0 var(--spacing-lg); /* Mais espaço entre abas */
     }
 }
 
-/* Alto Contraste - Ajustes finos se necessário */
-body.high-contrast .cta-button {
-    border: 2px solid var(--color-text-primary);
-}
-
-body.high-contrast .carousel-prev,
-body.high-contrast .carousel-next {
-    background-color: var(--color-accent);
-    color: var(--color-background);
-}
-
-body.high-contrast nav ul li a::after {
-    background-color: var(--color-secondary);
+/* Para telas muito grandes, evite que o conteúdo fique excessivamente largo */
+@media (min-width: 1440px) {
+    nav, main section .content-wrapper, .carousel-container, .tabs-container {
+        max-width: 1200px; /* Limite máximo mais confortável */
+    }
 }
