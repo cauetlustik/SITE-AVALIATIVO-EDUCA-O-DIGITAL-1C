@@ -1,97 +1,97 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>EcoSphere | Soluções Sustentáveis para Cidades Inteligentes</title>
-
-<meta name="description" content="Transformamos cidades com soluções sustentáveis: energia solar, reuso de água e agricultura urbana.">
-
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bem-Estar e Autocuidado</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+<body id="top">
 
-<body>
+    <header>
+        <nav aria-label="Navegação principal">
+            <a href="#top" class="logo">Bem-Estar</a>
+            <ul>
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#beneficios">Benefícios</a></li>
+                <li><a href="#recursos">Recursos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+            <div class="accessibility-controls">
+                <button id="decrease-font" aria-label="Diminuir tamanho da fonte">A-</button>
+                <button id="increase-font" aria-label="Aumentar tamanho da fonte">A+</button>
+                <button id="toggle-contrast" aria-label="Alternar modo de alto contraste">Contraste</button>
+            </div>
+        </nav>
+    </header>
 
-<header>
-    <nav class="container">
-        <h1 class="logo">🌱 EcoSphere</h1>
+    <main>
+        <section id="hero" aria-labelledby="hero-title">
+            <h1 id="hero-title">Descubra o Poder do Autocuidado</h1>
+            <p>Invista em você. Pequenos passos para uma vida mais equilibrada e feliz.</p>
+            <a href="#recursos" class="cta-button">Comece Agora</a>
+        </section>
 
-        <div class="controls">
-            <button id="increase-font">A+</button>
-            <button id="decrease-font">A-</button>
-            <button id="toggle-contrast">🌓</button>
-        </div>
-    </nav>
-</header>
+        <section id="sobre" aria-labelledby="sobre-title">
+            <h2 id="sobre-title">O que é Bem-Estar?</h2>
+            <article>
+                <p>Bem-estar é um estado dinâmico de saúde física, mental e social. Não se trata apenas da ausência de doença, mas sim de um processo ativo de fazer escolhas em direção a uma vida mais saudável e satisfatória.</p>
+                <p>O autocuidado é a prática consciente de tomar medidas para promover a própria saúde física e mental. É sobre reconhecer suas necessidades e agir para atendê-las.</p>
+            </article>
+        </section>
 
-<!-- HERO -->
-<section class="hero">
-    <div class="hero-content">
-        <h2>Cidades mais verdes começam hoje</h2>
-        <p>Transformamos espaços urbanos em soluções sustentáveis inteligentes.</p>
-        <a href="#services" class="btn">Conheça nossos serviços</a>
-    </div>
-</section>
+        <section id="beneficios" aria-labelledby="beneficios-title">
+            <h2 id="beneficios-title">Benefícios do Autocuidado</h2>
+            <div id="beneficios-carousel" class="carousel-container" aria-label="Carrossel de benefícios">
+                <div class="carousel-track">
+                    <!-- Conteúdo será renderizado via JavaScript -->
+                </div>
+                <button class="carousel-prev" aria-label="Anterior">&#10094;</button>
+                <button class="carousel-next" aria-label="Próximo">&#10095;</button>
+            </div>
+        </section>
 
-<!-- SOBRE -->
-<section class="container reveal">
-    <h2>Quem Somos</h2>
-    <p>
-        A EcoSphere é uma empresa focada em inovação sustentável para cidades modernas.
-        Atuamos com tecnologias ecológicas que reduzem impacto ambiental e aumentam qualidade de vida.
-    </p>
-</section>
+        <section id="recursos" aria-labelledby="recursos-title">
+            <h2 id="recursos-title">Ferramentas de Autocuidado</h2>
+            <div class="tabs-container" aria-label="Sistema de abas para ferramentas de autocuidado">
+                <ul class="tabs-nav" role="tablist">
+                    <li role="presentation">
+                        <button id="tab-mindfulness" class="tab-button" role="tab" aria-controls="tab-panel-mindfulness" aria-selected="true">Mindfulness</button>
+                    </li>
+                    <li role="presentation">
+                        <button id="tab-exercicios" class="tab-button" role="tab" aria-controls="tab-panel-exercicios" aria-selected="false">Exercícios</button>
+                    </li>
+                    <li role="presentation">
+                        <button id="tab-nutricao" class="tab-button" role="tab" aria-controls="tab-panel-nutricao" aria-selected="false">Nutrição</button>
+                    </li>
+                </ul>
+                <div id="tab-panel-mindfulness" class="tab-panel" role="tabpanel" aria-labelledby="tab-mindfulness">
+                    <h3>Práticas de Mindfulness</h3>
+                    <p>Aprenda a viver o momento presente. Meditação guiada, respiração consciente e atenção plena no dia a dia.</p>
+                </div>
+                <div id="tab-panel-exercicios" class="tab-panel" role="tabpanel" aria-labelledby="tab-exercicios" hidden>
+                    <h3>Movimente seu Corpo</h3>
+                    <p>Descubra atividades físicas que te dão prazer. Yoga, caminhadas, dança e alongamentos para energizar seu corpo.</p>
+                </div>
+                <div id="tab-panel-nutricao" class="tab-panel" role="tabpanel" aria-labelledby="tab-nutricao" hidden>
+                    <h3>Alimentação Consciente</h3>
+                    <p>Nutra seu corpo com alimentos saudáveis e saborosos. Dicas de receitas balanceadas e hidratação.</p>
+                </div>
+            </div>
+        </section>
 
-<!-- SERVIÇOS -->
-<section id="services" class="container reveal">
-    <h2>Nossos Serviços</h2>
-    <div id="services-grid" class="grid-layout"></div>
-</section>
+        <section id="contato" aria-labelledby="contato-title">
+            <h2 id="contato-title">Comece Sua Jornada</h2>
+            <p>Pronto para priorizar seu bem-estar? Entre em contato ou explore mais recursos.</p>
+            <a href="mailto:contato@bemestar.com" class="cta-button">Fale Conosco</a>
+        </section>
+    </main>
 
-<!-- DIFERENCIAIS -->
-<section class="highlight">
-    <div class="container grid-layout">
-        <div>
-            <h3>🌍 Impacto real</h3>
-            <p>Redução comprovada de emissão de carbono.</p>
-        </div>
-        <div>
-            <h3>⚡ Tecnologia</h3>
-            <p>Soluções modernas e eficientes.</p>
-        </div>
-        <div>
-            <h3>🤝 Parcerias</h3>
-            <p>Atuação com empresas e governos.</p>
-        </div>
-    </div>
-</section>
+    <footer>
+        <p>&copy; 2026 Bem-Estar e Autocuidado. Todos os direitos reservados.</p>
+        <a href="#top" aria-label="Voltar ao topo">Topo</a>
+    </footer>
 
-<!-- DEPOIMENTOS -->
-<section class="container reveal">
-    <h2>O que dizem nossos clientes</h2>
-    <div class="grid-layout">
-        <div class="card">
-            <p>"Reduzimos 40% do consumo de energia!"</p>
-            <strong>- Empresa X</strong>
-        </div>
-        <div class="card">
-            <p>"Projeto incrível e sustentável."</p>
-            <strong>- Condomínio Y</strong>
-        </div>
-    </div>
-</section>
-
-<!-- CTA -->
-<section class="cta">
-    <h2>Pronto para transformar sua cidade?</h2>
-    <button class="btn">Fale Conosco</button>
-</section>
-
-<footer>
-    <p>&copy; <span id="year"></span> EcoSphere</p>
-</footer>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
