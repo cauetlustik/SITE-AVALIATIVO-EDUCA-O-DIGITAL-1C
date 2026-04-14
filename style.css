@@ -1,77 +1,55 @@
-/* --- DESIGN SYSTEM (:root) --- */
-:root {
-    --primary: #2d5a27;
-    --secondary: #92ba92;
-    --bg-color: #f4f7f4;
-    --text-color: #333;
-    --white: #ffffff;
-    --radius: 12px;
-    --gap: 2rem;
-    --transition: 0.3s ease-in-out;
-    --font-size-base: 1rem;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url('https://images.unsplash.com/photo-1497436072909-60f360e1d4b1');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
 }
 
-/* --- MODO ALTO CONTRASTE --- */
-body.high-contrast {
-    --primary: #ffff00;
-    --bg-color: #000000;
-    --text-color: #ffffff;
-    --white: #000000;
-    border: 1px solid #fff;
+.hero h2 {
+    font-size: 3rem;
 }
 
-/* --- RESET & BASE --- */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { 
-    font-family: 'Segoe UI', sans-serif; 
-    background-color: var(--bg-color); 
-    color: var(--text-color);
-    line-height: 1.6;
-    font-size: var(--font-size-base);
-    transition: background 0.3s, font-size 0.2s;
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background: #4caf50;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: 0.3s;
 }
 
-.container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
-
-/* --- GRID SYSTEM (Flexível e Mobile-First) --- */
-.grid-layout {
-    display: grid;
-    gap: var(--gap);
-    /* Mobile-first: 1 coluna. Desktop: 3 colunas */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.btn:hover {
+    background: #388e3c;
 }
 
-/* --- COMPONENTES --- */
-.card {
-    background: var(--white);
-    padding: 1.5rem;
-    border-radius: var(--radius);
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform var(--transition);
+/* DIFERENCIAIS */
+.highlight {
+    background: #e8f5e9;
+    padding: 60px 0;
 }
 
-.card:hover { transform: translateY(-5px); }
+/* CTA */
+.cta {
+    background: #2d5a27;
+    color: white;
+    text-align: center;
+    padding: 60px 20px;
+}
 
-/* --- ANIMAÇÃO REVEAL --- */
+/* ANIMAÇÃO */
 .reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
+    transform: translateY(40px);
 }
 
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* --- HEADER & CONTROLES --- */
-header { background: var(--primary); color: white; padding: 1rem 0; }
-.accessibility-controls button {
-    cursor: pointer;
-    background: transparent;
-    border: 1px solid white;
-    color: white;
-    padding: 5px 10px;
-    margin-left: 5px;
-    border-radius: 4px;
+    transition: 0.8s;
 }
