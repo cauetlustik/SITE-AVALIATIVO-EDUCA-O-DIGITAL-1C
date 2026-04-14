@@ -1,47 +1,97 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoSphere | Sustentabilidade Urbana</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EcoSphere | Soluções Sustentáveis para Cidades Inteligentes</title>
+
+<meta name="description" content="Transformamos cidades com soluções sustentáveis: energia solar, reuso de água e agricultura urbana.">
+
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <header role="banner">
-        <nav class="container" aria-label="Navegação Principal">
-            <div class="logo">EcoSphere</div>
-            <div class="accessibility-controls">
-                <button id="increase-font" aria-label="Aumentar fonte">A+</button>
-                <button id="decrease-font" aria-label="Diminuir fonte">A-</button>
-                <button id="toggle-contrast" aria-label="Alternar alto contraste">🌓</button>
-            </div>
-        </nav>
-    </header>
+<header>
+    <nav class="container">
+        <h1 class="logo">🌱 EcoSphere</h1>
 
-    <main>
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="carousel" id="main-carousel">
-                </div>
-        </section>
+        <div class="controls">
+            <button id="increase-font">A+</button>
+            <button id="decrease-font">A-</button>
+            <button id="toggle-contrast">🌓</button>
+        </div>
+    </nav>
+</header>
 
-        <section id="services" class="container reveal">
-            <h2 id="services-title">Nossos Serviços</h2>
-            <div class="grid-layout" id="services-grid">
-                </div>
-        </section>
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h2>Cidades mais verdes começam hoje</h2>
+        <p>Transformamos espaços urbanos em soluções sustentáveis inteligentes.</p>
+        <a href="#services" class="btn">Conheça nossos serviços</a>
+    </div>
+</section>
 
-        <section id="faq" class="container reveal">
-            <h2>Dúvidas Frequentes</h2>
-            <div id="faq-accordion">
-                </div>
-        </section>
-    </main>
+<!-- SOBRE -->
+<section class="container reveal">
+    <h2>Quem Somos</h2>
+    <p>
+        A EcoSphere é uma empresa focada em inovação sustentável para cidades modernas.
+        Atuamos com tecnologias ecológicas que reduzem impacto ambiental e aumentam qualidade de vida.
+    </p>
+</section>
 
-    <footer role="contentinfo">
-        <p>&copy; 2024 EcoSphere. Design focado em acessibilidade.</p>
-    </footer>
+<!-- SERVIÇOS -->
+<section id="services" class="container reveal">
+    <h2>Nossos Serviços</h2>
+    <div id="services-grid" class="grid-layout"></div>
+</section>
 
-    <script src="script.js"></script>
+<!-- DIFERENCIAIS -->
+<section class="highlight">
+    <div class="container grid-layout">
+        <div>
+            <h3>🌍 Impacto real</h3>
+            <p>Redução comprovada de emissão de carbono.</p>
+        </div>
+        <div>
+            <h3>⚡ Tecnologia</h3>
+            <p>Soluções modernas e eficientes.</p>
+        </div>
+        <div>
+            <h3>🤝 Parcerias</h3>
+            <p>Atuação com empresas e governos.</p>
+        </div>
+    </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section class="container reveal">
+    <h2>O que dizem nossos clientes</h2>
+    <div class="grid-layout">
+        <div class="card">
+            <p>"Reduzimos 40% do consumo de energia!"</p>
+            <strong>- Empresa X</strong>
+        </div>
+        <div class="card">
+            <p>"Projeto incrível e sustentável."</p>
+            <strong>- Condomínio Y</strong>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <h2>Pronto para transformar sua cidade?</h2>
+    <button class="btn">Fale Conosco</button>
+</section>
+
+<footer>
+    <p>&copy; <span id="year"></span> EcoSphere</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
