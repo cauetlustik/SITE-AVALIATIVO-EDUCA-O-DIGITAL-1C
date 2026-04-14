@@ -1,55 +1,466 @@
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-    url('https://images.unsplash.com/photo-1497436072909-60f360e1d4b1');
+   /* ======================================== */
+/* ----- Design System (Variáveis CSS) ----- */
+/* ======================================== */
+
+:root {
+    /* Paleta de Cores */
+    --color-primary: #4CAF50; /* Verde */
+    --color-secondary: #FFC107; /* Amarelo */
+    --color-accent: #2196F3; /* Azul */
+    --color-background: #f4f4f4; /* Cinza claro */
+    --color-surface: #ffffff; /* Branco */
+    --color-text-primary: #333333; /* Cinza escuro */
+    --color-text-secondary: #777777; /* Cinza médio */
+    --color-text-on-primary: #ffffff; /* Branco */
+
+    /* Espaçamentos */
+    --spacing-xs: 0.5rem; /* 8px */
+    --spacing-sm: 1rem; /* 16px */
+    --spacing-md: 1.5rem; /* 24px */
+    --spacing-lg: 2rem; /* 32px */
+    --spacing-xl: 3rem; /* 48px */
+
+    /* Arredondamentos */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+
+    /* Tipografia */
+    --font-size-base: 1rem; /* 16px */
+    --font-size-lg: 1.25rem; /* 20px */
+    --font-size-xl: 1.5rem; /* 24px */
+    --font-size-h1: 2.5rem; /* 40px */
+    --font-size-h2: 2rem; /* 32px */
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+
+    /* Transições */
+    --transition-smooth: all 0.3s ease-in-out;
+}
+
+/* ======================================== */
+/* ----- Modo de Alto Contraste (CSS) ----- */
+/* ======================================== */
+
+body.high-contrast {
+    --color-primary: #00ff00; /* Verde brilhante */
+    --color-secondary: #ffff00; /* Amarelo brilhante */
+    --color-accent: #00ffff; /* Ciano */
+    --color-background: #000000; /* Preto */
+    --color-surface: #111111; /* Cinza muito escuro */
+    --color-text-primary: #ffffff; /* Branco */
+    --color-text-secondary: #cccccc; /* Cinza claro */
+    --color-text-on-primary: #000000; /* Preto */
+}
+
+/* ======================================== */
+/* ----- Estilos Globais (Mobile-First) ----- */
+/* ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Habilita scroll suave */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    font-size: var(--font-size-base);
+    transition: var(--transition-smooth);
+}
+
+h1, h2, h3 {
+    font-weight: var(--font-weight-bold);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+}
+
+h1 { font-size: var(--font-size-h1); }
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-xl); }
+
+p {
+    margin-bottom: var(--spacing-md);
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+}
+
+a:hover, a:focus {
+    text-decoration: underline;
+    color: var(--color-primary);
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: inherit;
+    transition: var(--transition-smooth);
+}
+
+ul {
+    list-style: none;
+}
+
+/* ======================================== */
+/* ----- Componentes e Layouts ----- */
+/* ======================================== */
+
+/* Header e Navegação */
+header {
+    background-color: var(--color-surface);
+    padding: var(--spacing-sm) var(--spacing-md);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-lg);
+    color: var(--color-primary);
+}
+
+nav ul {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+nav ul li a {
+    color: var(--color-text-primary);
+    font-weight: var(--font-weight-bold);
+    padding: var(--spacing-sm) 0;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: var(--transition-smooth);
+}
+
+nav ul li a:hover::after,
+nav ul li a:focus::after {
+    width: 100%;
+}
+
+.accessibility-controls {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.accessibility-controls button {
+    background-color: var(--color-primary);
+    color: var(--color-text-on-primary);
+    border-radius: var(--radius-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-weight: var(--font-weight-bold);
+    transition: var(--transition-smooth);
+}
+
+.accessibility-controls button:hover,
+.accessibility-controls button:focus {
+    background-color: var(--color-accent);
+    transform: translateY(-2px);
+}
+
+/* Seções Principais */
+main section {
+    padding: var(--spacing-xl) var(--spacing-md);
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Hero Section */
+#hero {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://via.placeholder.com/1500x500/ADD8E6/000000?text=Natureza+Relaxante'); /* Placeholder de imagem */
     background-size: cover;
     background-position: center;
+    color: var(--color-text-on-primary);
+    min-height: 60vh;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    text-align: center;
-    color: white;
+    align-items: center;
 }
 
-.hero h2 {
-    font-size: 3rem;
+#hero h1 {
+    color: var(--color-text-on-primary);
+    margin-bottom: var(--spacing-sm);
 }
 
-.btn {
+#hero p {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.cta-button {
+    background-color: var(--color-secondary);
+    color: var(--color-text-primary);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-lg);
+    transition: var(--transition-smooth);
     display: inline-block;
-    margin-top: 20px;
-    padding: 12px 24px;
-    background: #4caf50;
-    color: white;
-    border-radius: 6px;
+}
+
+.cta-button:hover,
+.cta-button:focus {
+    background-color: var(--color-primary);
+    color: var(--color-text-on-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-decoration: none;
-    transition: 0.3s;
 }
 
-.btn:hover {
-    background: #388e3c;
+/* Seção Sobre */
+#sobre article {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
 }
 
-/* DIFERENCIAIS */
-.highlight {
-    background: #e8f5e9;
-    padding: 60px 0;
+/* Seção Benefícios - Carrossel */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: var(--spacing-xl) auto;
+    overflow: hidden;
+    padding: 0 var(--spacing-lg); /* Espaço para botões */
 }
 
-/* CTA */
-.cta {
-    background: #2d5a27;
-    color: white;
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+    background-color: var(--color-surface);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding: 60px 20px;
+    margin-right: 1rem; /* Espaço entre itens visíveis se não for 100% */
 }
 
-/* ANIMAÇÃO */
-.reveal {
+.carousel-item h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--color-primary);
+    color: var(--color-text-on-primary);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition-smooth);
+}
+
+.carousel-prev {
+    left: 0;
+}
+
+.carousel-next {
+    right: 0;
+}
+
+.carousel-prev:hover,
+.carousel-prev:focus,
+.carousel-next:hover,
+.carousel-next:focus {
+    background-color: var(--color-accent);
+}
+
+/* Seção Recursos - Abas */
+.tabs-container {
+    max-width: 800px;
+    margin: var(--spacing-xl) auto;
+    background-color: var(--color-surface);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.tabs-nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--color-background);
+    padding-bottom: var(--spacing-sm);
+}
+
+.tab-button {
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    padding: var(--spacing-sm) var(--spacing-md);
+    margin: 0 var(--spacing-xs);
+    border-bottom: 3px solid transparent;
+    font-weight: var(--font-weight-bold);
+    transition: var(--transition-smooth);
+}
+
+.tab-button[aria-selected="true"] {
+    color: var(--color-primary);
+    border-bottom-color: var(--color-primary);
+}
+
+.tab-button:hover,
+.tab-button:focus {
+    color: var(--color-accent);
+}
+
+.tab-panel {
+    padding: var(--spacing-md) 0;
+    text-align: center;
+}
+
+/* Seção Contato */
+#contato {
+    background-color: var(--color-surface);
+    border-radius: var(--radius-lg);
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-xl) var(--spacing-md);
+}
+
+/* Footer */
+footer {
+    background-color: var(--color-text-primary);
+    color: var(--color-text-on-primary);
+    text-align: center;
+    padding: var(--spacing-lg) var(--spacing-md);
+    margin-top: var(--spacing-xl);
+}
+
+footer a {
+    color: var(--color-secondary);
+    font-weight: var(--font-weight-bold);
+}
+
+footer a:hover,
+footer a:focus {
+    color: var(--color-surface);
+}
+
+/* ======================================== */
+/* ----- Animações de Entrada (Scroll Reveal) ----- */
+/* ======================================== */
+
+[data-scroll-reveal="true"] {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.reveal.active {
+[data-scroll-reveal="true"].is-visible {
     opacity: 1;
     transform: translateY(0);
-    transition: 0.8s;
+}
+
+/* ======================================== */
+/* ----- Responsividade (Media Queries) ----- */
+/* ======================================== */
+
+/* Tablets e Telas Maiores */
+@media (min-width: 768px) {
+    body {
+        font-size: calc(var(--font-size-base) + 0.1rem); /* Aumenta um pouco a fonte base */
+    }
+
+    h1 { font-size: calc(var(--font-size-h1) * 1.1); }
+    h2 { font-size: calc(var(--font-size-h2) * 1.1); }
+
+    nav ul {
+        display: flex; /* Garante que a navegação esteja visível */
+    }
+
+    .carousel-item {
+        min-width: calc(50% - 0.5rem); /* Exibe dois itens por vez em telas maiores */
+    }
+
+    .tabs-nav {
+        justify-content: flex-start; /* Alinha as abas à esquerda */
+    }
+
+    .tab-button {
+        margin: 0 var(--spacing-sm);
+    }
+}
+
+/* Desktops e Telas Grandes */
+@media (min-width: 1024px) {
+    body {
+        font-size: var(--font-size-base); /* Volta ao base, mas com mais espaço */
+    }
+
+    h1 { font-size: var(--font-size-h1); }
+    h2 { font-size: var(--font-size-h2); }
+
+    main section {
+        padding: var(--spacing-xl) var(--spacing-xl); /* Mais padding horizontal */
+    }
+
+    .carousel-item {
+        min-width: calc(33.333% - 0.7rem); /* Exibe três itens por vez */
+    }
+}
+
+/* Alto Contraste - Ajustes finos se necessário */
+body.high-contrast .cta-button {
+    border: 2px solid var(--color-text-primary);
+}
+
+body.high-contrast .carousel-prev,
+body.high-contrast .carousel-next {
+    background-color: var(--color-accent);
+    color: var(--color-background);
+}
+
+body.high-contrast nav ul li a::after {
+    background-color: var(--color-secondary);
 }
